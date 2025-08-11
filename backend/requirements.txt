@@ -1,0 +1,19 @@
+fastapi
+uvicorn
+python-docx
+pandas
+pillow
+pytesseract
+numpy
+faiss-cpu
+PyMuPDF
+pydantic
+python-multipart
+PyPDF2
+huggingface_hub
+sentence-transformers
+
+google-generativeai
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "D:/RAG-API/rag-api/noted-flash-459002-k8-bf0ac08c5bb8.json"
+
+tesseract 
