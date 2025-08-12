@@ -3,39 +3,46 @@ import streamlit as st
 import requests
 
 API_URL = "http://localhost:8000"  # Change as needed
+st.set_page_config(page_title="RAG")
+st.title('RAG Assistant !!')
 
-import os
-btn_html = """
-<style>
-.my-button {
-    background-color: #00FF00;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-</style>
-<button class="my-button" onclick="window.dispatchEvent(new CustomEvent('streamlit:buttonClick', {detail: 'button1'}))">Button 1</button>
-"""
-def load_css(file_path):
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    full_path = os.path.join(script_dir, file_path)
-    with open(full_path) as f:
-        css = f.read()
-        st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+st.markdown("""
+    <style>
+    /* Hide the file type text */
+    div[data-testid="stFileUploader"] section div:nth-child(2) {
+        display: none;
+    }
 
+    /* Remove outer border, padding, and background */
+    div[data-testid="stFileUploader"] {
+        border: none;
+        padding: 0;
+        background: transparent;
+    }
 
-load_css("styles.css")
+    /* Style the Browse files button */
+    div[data-testid="stFileUploader"] section div div {
+        background-color: #4CAF50; /* green */
+        color: white;
+        border-radius: 8px;
+        border: none !important;
+        padding: 6px 16px;
+        font-size: 14px;
+        cursor: pointer;
+    }
 
-st.title("Welcome!!")
-
+    /* Remove the big drop area effect */
+    div[data-testid="stFileUploader"] section {
+        padding: 0;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 with st.sidebar:
+    
     st.header("Upload Document")
     uploaded_file = st.file_uploader(
-        "Choose a file",
+        label="Choose a file",
         type=["pdf", "txt", "csv", "docx", "jpg", "jpeg", "png", "db"],
         key="file_upload"
     )
@@ -47,7 +54,7 @@ with st.sidebar:
     )
     
 
-    if st.button("Upload", key="upload_btn") and uploaded_file is not None:
+    if st.button("Upload", key="upload_btn", icon='🗃️') and uploaded_file is not None:
         with st.spinner("Uploading and processing..."):
             files = {"file": (uploaded_file.name, uploaded_file.getvalue())}
             params = {"model_name": model_name}
@@ -60,7 +67,7 @@ with st.sidebar:
                 #st.write(f"Chunks created: {data.get('chunks', '?')}")
             except Exception as e:
                 st.error(f"Upload failed: {e}")
-    if st.button("Delete Files", key="delete_files_btn"):
+    if st.button("Delete Files", key="delete_files_btn",type='primary'):
         with st.spinner("Deleting files..."):
             response = requests.post(f"{API_URL}/delete_files", json={"model_name": model_name})
             response.raise_for_status()  # will raise if error

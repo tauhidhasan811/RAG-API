@@ -1,3 +1,4 @@
 streamlit
 requests
+pathlib
 streamlit_extras

@@ -1,15 +1,12 @@
-div[data-baseweb="button"] div:nth-child(1) button {
-    background-color: #00FF00 !important;  /* Green for Button 1 */
-    color: white !important;
+.st-key-test button{
+    background-color: blue;
 }
-div[data-baseweb="button"] div:nth-child(2) button {
-    background-color: #FF0000 !important;  /* Red for Button 2 */
-    color: white !important;
-}
-div[data-testid="stFileUploaderDropzoneInstructions"] {
-    display: none;
-}
-div[data-testid="stFileUploaderDropzone"] {
-    min-height: 40px !important;
-    max-width: 200px;
+.my-button btn_html{
+    background-color: #00FF00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
 }
