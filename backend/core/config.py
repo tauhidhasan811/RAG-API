@@ -2,10 +2,10 @@ import os
 from huggingface_hub import InferenceClient
 
 
-API_TOKEN = os.environ["HF_TOKEN"] # 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
+API_TOKEN = os.environ["HF_TOKEN"] 
 
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "D:/RAG-API/rag-api/noted-flash-459002-k8-bf0ac08c5bb8.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"D:\RAG-API\rag-api\gemeni_api.json"
 
 
 gemini_model = "models/text-embedding-004"

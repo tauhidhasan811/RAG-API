@@ -13,6 +13,10 @@
    ```python
    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "D:/RAG-API/rag-api/your-file.json"
 > **Note:** An additional key will be provided via email.
+3. **OCR Setup:**  
+- To enable text extraction from images on Windows, set the default path for the Tesseract OCR executable in the file `backend/services/reader.py`.  
+- The default path is usually: `C:\Program Files\Tesseract-OCR\tesseract.exe`.  
+- Ensure Tesseract OCR is installed on your system; you can download it from [Tesseract OCR](https://github.com/tesseract-ocr/tesseract).
 
 
 # Start the Application
