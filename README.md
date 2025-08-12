@@ -31,3 +31,4 @@ pip install -r frontend/requirements.txt
 streamlit run frontend/app.py
 ```
 
+> **Additional Note:** Still, this application works primarily via APIs, but some backend processes like finding related data and embedding user queries may take longer if you upload large or many documents. Using a GPU can improve performance for these tasks.
